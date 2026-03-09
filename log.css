@@ -1,0 +1,579 @@
+/* ============================================================
+    RESET & BASE
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #050d1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* ============================================================
+       PAGE BACKGROUND  —  dark robotics gradient + animated grid
+    ============================================================ */
+    .page-background {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+
+      /* Dark blue-black base */
+      background-color: #050d1a;
+
+      /* Subtle moving grid lines — gives a circuit-board feel */
+      background-image:
+        linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      from { background-position: 0 0; }
+      to   { background-position: 40px 40px; }
+    }
+
+    /* Soft glow blobs in the corners */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.45;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Top-left — blue glow */
+    .blob-1 {
+      width: 450px;
+      height: 450px;
+      background-color: #0055cc;
+      top: -150px;
+      left: -150px;
+    }
+
+    /* Bottom-right — purple glow */
+    .blob-2 {
+      width: 380px;
+      height: 380px;
+      background-color: #6a0dad;
+      bottom: -100px;
+      right: -100px;
+    }
+
+    /* Center — cyan glow */
+    .blob-3 {
+      width: 220px;
+      height: 220px;
+      background-color: #00b8cc;
+      top: 45%;
+      left: 45%;
+      opacity: 0.2;
+    }
+
+    /* ============================================================
+       CARD WRAPPER  —  sits above the background
+    ============================================================ */
+    .card-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    /* ============================================================
+       LOGIN CARD  —  dark glass panel
+    ============================================================ */
+    .login-card {
+      /* Semi-transparent dark background */
+      background-color: rgba(8, 18, 36, 0.92);
+
+      border-radius: 20px;
+      padding: 44px 40px;
+
+      /* Cyan border glow */
+      border: 1px solid rgba(0, 229, 255, 0.18);
+
+      box-shadow:
+        0 0 0 1px rgba(0, 229, 255, 0.05),
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 80px rgba(0, 100, 200, 0.1);
+
+      animation: slideUp 0.6s ease both;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ============================================================
+       CARD HEADER  —  logo icon + title + subtitle
+    ============================================================ */
+    .card-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    /* Logo icon box — cyan to purple gradient */
+    .logo-circle {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #00aaff, #8a2be2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 16px;
+      box-shadow: 0 8px 24px rgba(0, 170, 255, 0.4);
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #e8f4ff;
+      margin-bottom: 6px;
+      letter-spacing: -0.4px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: #4a7a9b;
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       FORM  —  vertical stack of fields
+    ============================================================ */
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ── Single field block ── */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    /* Label above input */
+    .field-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #00e5ff;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* Wrapper holds input + icon */
+    .field-input-wrap {
+      position: relative;
+    }
+
+    /* The text input itself */
+    .field-input {
+      width: 100%;
+      padding: 13px 44px 13px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #d0f0ff;
+
+      /* Dark transparent background */
+      background-color: rgba(0, 229, 255, 0.04);
+
+      /* Subtle cyan border */
+      border: 2px solid rgba(0, 229, 255, 0.15);
+
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    }
+
+    .field-input::placeholder {
+      color: #2a5068;
+      font-weight: 400;
+    }
+
+    /* Focused state — cyan glow */
+    .field-input:focus {
+      border-color: rgba(0, 229, 255, 0.55);
+      background-color: rgba(0, 229, 255, 0.07);
+      box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.1);
+    }
+
+    /* Error state — red/pink border */
+    .field-input.has-error {
+      border-color: rgba(255, 60, 100, 0.6);
+      background-color: rgba(255, 60, 100, 0.05);
+      box-shadow: 0 0 0 4px rgba(255, 60, 100, 0.1);
+    }
+
+    /* Icon placed inside input on the right */
+    .field-icon {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #2a5068;
+      pointer-events: none;
+      transition: color 0.2s;
+    }
+
+    /* When input is focused, icon turns cyan */
+    .field-input:focus + .field-icon {
+      color: #00e5ff;
+    }
+
+    /* Button to show / hide password */
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #2a5068;
+      padding: 2px;
+      transition: color 0.2s;
+    }
+
+    .toggle-password:hover {
+      color: #00e5ff;
+    }
+
+    /* Error message shown below field */
+    .field-error {
+      font-size: 12px;
+      font-weight: 600;
+      color: #ff4d6d;
+      display: none;           /* hidden by default */
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Add .visible class via JS to show it */
+    .field-error.visible {
+      display: flex;
+      animation: shake 0.35s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25%       { transform: translateX(-5px); }
+      75%       { transform: translateX(5px); }
+    }
+
+    /* ============================================================
+       OPTIONS ROW  —  "Remember me" checkbox + "Forgot password"
+    ============================================================ */
+    .options-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: -4px;
+    }
+
+    /* Wrapper for the custom checkbox + text */
+    .remember-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4a7a9b;
+      user-select: none;
+    }
+
+    /* Hide the native checkbox */
+    .remember-label input[type="checkbox"] {
+      display: none;
+    }
+
+    /* Custom-drawn checkbox box */
+    .custom-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(0, 229, 255, 0.25);
+      border-radius: 6px;
+      background-color: rgba(0, 229, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #050d1a;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    /* Checked state — fills with cyan */
+    .remember-label input:checked ~ .custom-checkbox {
+      background-color: #00e5ff;
+      border-color: #00e5ff;
+    }
+
+    /* Forgot password link */
+    .forgot-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: #00c8e0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .forgot-link:hover {
+      color: #00ff99;
+    }
+
+    /* ============================================================
+       SIGN IN BUTTON  —  cyan to purple gradient
+    ============================================================ */
+    .btn-signin {
+      position: relative;
+      width: 100%;
+      padding: 14px;
+
+      /* Cyan → blue → purple gradient */
+      background: linear-gradient(135deg, #ff0095, #00ccff 45%, #8a2be2);
+      background-size: 200% auto;
+
+      color: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      overflow: hidden;
+
+      box-shadow:
+        0 6px 20px rgba(0, 136, 255, 0.35),
+        0 0 40px rgba(0, 200, 255, 0.1);
+
+      transition: background-position 0.4s, transform 0.2s, box-shadow 0.2s;
+      margin-top: 4px;
+    }
+
+    .btn-signin:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 30px rgba(0, 136, 255, 0.5),
+        0 0 60px rgba(0, 200, 255, 0.15);
+    }
+
+    .btn-signin:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    /* Button label */
+    .btn-text {
+      transition: opacity 0.2s;
+    }
+
+    /* Spinner container — sits on top of button text */
+    .btn-spinner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* When .loading is added, hide text and show spinner */
+    .btn-signin.loading .btn-text    { opacity: 0; }
+    .btn-signin.loading .btn-spinner { opacity: 1; }
+
+    /* Spinning circle animation */
+    .spinner-circle {
+      width: 20px;
+      height: 20px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.65s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ============================================================
+       DIVIDER  —  line / "or" / line
+    ============================================================ */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+    }
+
+    .divider-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2a5068;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       SOCIAL BUTTONS  —  Google + Facebook side by side
+    ============================================================ */
+    .social-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+
+      background-color: rgba(0, 229, 255, 0.04);
+      border: 2px solid rgba(0, 229, 255, 0.12);
+      border-radius: 12px;
+
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #7ab8cc;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-social:hover {
+      background-color: rgba(0, 229, 255, 0.09);
+      border-color: rgba(0, 229, 255, 0.4);
+      color: #00e5ff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 229, 255, 0.12);
+    }
+
+    /* ============================================================
+       SIGN UP LINK  —  bottom of card
+    ============================================================ */
+    .signup-text {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #2a5068;
+    }
+
+    .signup-link {
+      color: #00e5ff;
+      text-decoration: none;
+      font-weight: 800;
+      transition: color 0.2s;
+    }
+
+    .signup-link:hover {
+      color: #00ff99;
+    }
+
+    /* ============================================================
+       SUCCESS OVERLAY  —  shown after successful login
+    ============================================================ */
+    .success-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(5, 13, 26, 0.95);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+
+    /* Add .show via JS to make it visible */
+    .success-overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Green success circle — robotics "system online" feel */
+    .success-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00cc88, #00e5ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #050d1a;
+      box-shadow: 0 8px 28px rgba(0, 255, 153, 0.4);
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .success-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #00ff99;
+      letter-spacing: 0.5px;
+    }
+
+    .success-msg {
+      font-size: 14px;
+      color: #4a7a9b;
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       RESPONSIVE  —  small screens
+    ============================================================ */
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 36px 24px 32px;
+      }
+
+      .social-row {
+        grid-template-columns: 1fr;
+      }
+    }
+.VORTEX{
+    width: 55px;
+    height: 55px;
+}

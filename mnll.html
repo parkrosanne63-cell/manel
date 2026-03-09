@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboHub — Learn. Build. Innovate.</title>
+    <link rel="stylesheet" href="stylee.css">
+</head>
+
+<body>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="#" class="logo">
+            <div class="logo-mark">
+                <img src="logo.jpg" alt="logo" class="VORTEX">
+            </div>VORTEX<span>electronics</span>
+        </a>
+        <div class="nav-pill">
+            <button class="nl active" onclick="goTo('home',this)">Home</button>
+            <button class="nl" onclick="goTo('tutorials',this)">Tutorials</button>
+            <button class="nl" onclick="goTo('shop',this)">Shop</button>
+            <button class="nl" onclick="goTo('projects',this)">Projects</button>
+            <button class="nl" onclick="goTo('wiring',this)">Wiring</button>
+            <button class="nl" onclick="goTo('partners',this)">Team partners</button>
+        </div>
+        <div class="nav-r">
+            <button class="cart-pill" onclick="openDrawer()">🛒 Cart <span class="cdot" id="cc">0</span></button>
+            <a href="#platform" class="btn-cta" onclick="switchTab('tutorials')">Get Started →</a>
+            <div class="ham" id="ham"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" style="position:relative;z-index:2;">
+        <div class="hero">
+            <div>
+                <div class="hero-badge"><span class="bpulse"></span>#1 Robotics Learning Platform</div>
+                <h1 class="hero-title">Build <span class="hl">Smarter</span><br>Robots with<br><span
+                        class="hl2">Confidence</span></h1>
+                <p class="hero-sub">Explore cutting-edge components, industrial-grade PCB renders,and comprehensive
+                    guides for high-performance builds.</p>
+                <div class="hero-acts">
+                    <a href="#platform" class="btn-cta" onclick="switchTab('tutorials')">🎓 Start Learning Free</a>
+                    <a href="#platform" class="btn-ghost" onclick="switchTab('projects')"><i
+                            class="fa-solid fa-robot"></i> Chat Bot</a>
+                </div>
+                <div class="hero-metrics">
+                    <div><span class="m-val" data-target="18400">0</span>
+                        <div class="m-lbl">Active Learners</div>
+                    </div>
+                    <div><span class="m-val" data-target="420">0</span>
+                        <div class="m-lbl">Tutorials</div>
+                    </div>
+                    <div><span class="m-val" data-target="3200">0</span>
+                        <div class="m-lbl">Components</div>
+                    </div>
+                    <div><span class="m-val" data-target="97">0</span>
+                        <div class="m-lbl">% Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-viz">
+                <div class="robot-stage">
+                    <div class="otag"><span><i class="fa-solid fa-chalkboard"></i></span>
+                        <div>
+                            <div style="font-size:.74rem;font-weight:700">New Lesson</div>
+                            <div style="font-size:.68rem;color:var(--muted)">ROS2 Navigation</div>
+                        </div>
+                    </div>
+                    <div class="otag"><span><i class="fa-solid fa-boxes-packing"></i></span>
+                        <div>
+                            <div style="font-size:.74rem;font-weight:700">Order Shipped</div>
+                            <div style="font-size:.68rem;color:var(--muted)">Servo Kit × 3</div>
+                        </div>
+                    </div>
+                    <div class="otag"><span><i class="fa-solid fa-wifi"></i></span>
+                        <div>
+                            <div style="font-size:.74rem;font-weight:700">ESP32 Ready</div>
+                            <div style="font-size:.68rem;color:var(--muted)">WiFi Active</div>
+                        </div>
+                    </div>
+                    <div class="sring"></div>
+                    <div class="sring2"></div>
+                    <div class="rbody">
+                        <div class="rhead">
+                            <div class="antenna"></div>
+                            <div class="reyes">
+                                <div class="reye"></div>
+                                <div class="reye"></div>
+                            </div>
+                        </div>
+                        <div class="rtorso">
+                            <div class="rarm l"></div>
+                            <div class="rarm r"></div>
+                            <div class="tpanel">
+                                <div class="tbit"></div>
+                                <div class="tbit"></div>
+                                <div class="tbit"></div>
+                                <div class="tbit"></div>
+                                <div class="tbit"></div>
+                                <div class="tbit"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <div class="feat-strip reveal">
+        <div class="container">
+            <div class="feat-row">
+                <div class="feat-item">
+                    <div class="feat-icon">🚀</div>
+                    <div>
+                        <div class="feat-title">Fast Shipping</div>
+                        <div class="feat-desc">Components shipped within 24h worldwide</div>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">📚</div>
+                    <div>
+                        <div class="feat-title">Expert Tutorials</div>
+                        <div class="feat-desc">Structured paths from beginner to advanced</div>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">🔧</div>
+                    <div>
+                        <div class="feat-title">Wiring Guides</div>
+                        <div class="feat-desc">Interactive diagrams for every component</div>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon">🤝</div>
+                    <div>
+                        <div class="feat-title">Community</div>
+                        <div class="feat-desc">Join 18K+ makers sharing ideas & projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLATFORM -->
+    <section class="section" id="platform">
+        <div class="container">
+            <div style="margin-bottom:2rem" class="reveal">
+                <div class="slabel">Platform</div>
+                <h2 class="stitle">Everything You Need to <span class="hl">Build</span></h2>
+                <p class="ssub">One platform for learning, shopping, discovering projects, and wiring your robots.</p>
+            </div>
+
+            <div class="stabs reveal">
+                <button class="stab active" onclick="switchTab('tutorials')" data-tab="tutorials"><span>🎓</span> Access
+                    Tutorials</button>
+                <button class="stab" onclick="switchTab('shop')" data-tab="shop"><span>🛒</span> Shop
+                    Components</button>
+                <button class="stab" onclick="switchTab('projects')" data-tab="projects"><span>🔍</span> Browse
+                    Projects</button>
+                <button class="stab" onclick="switchTab('wiring')" data-tab="wiring"><span>⚡</span> Wiring
+                    Guide</button>
+            </div>
+
+            <!-- TUTORIALS TAB -->
+            <div class="tab-content active" id="tab-tutorials">
+                <div class="fchips reveal">
+                    <button class="fchip active" onclick="filterTuts(this,'all')">All Topics</button>
+                    <button class="fchip" onclick="filterTuts(this,'arduino')">Arduino</button>
+                    <button class="fchip" onclick="filterTuts(this,'ros')">ROS / ROS2</button>
+                    <button class="fchip" onclick="filterTuts(this,'ml')">AI & ML</button>
+                    <button class="fchip" onclick="filterTuts(this,'motors')">Motors & Servos</button>
+                    <button class="fchip" onclick="filterTuts(this,'sensors')">Sensors</button>
+                </div>
+                <div class="tgrid reveal" id="tgrid"></div>
+                <div style="text-align:center;margin-top:2rem" class="reveal">
+                    <button class="btn-ghost" style="padding:11px 28px;font-size:.92rem">View All 420 Tutorials
+                        →</button>
+                </div>
+            </div>
+
+            <!-- SHOP TAB -->
+            <div class="tab-content" id="tab-shop">
+                <div class="shop-layout">
+                    <aside class="sidebar reveal">
+                        <div class="sb-title">Filters</div>
+                        <div class="fg">
+                            <div class="fg-title">Category</div>
+                            <label class="fopt"><input type="checkbox" checked> Microcontrollers</label>
+                            <label class="fopt"><input type="checkbox" checked> Sensors</label>
+                            <label class="fopt"><input type="checkbox"> Motors & Actuators</label>
+                            <label class="fopt"><input type="checkbox"> Power & Batteries</label>
+                            <label class="fopt"><input type="checkbox"> Wireless Modules</label>
+                            <label class="fopt"><input type="checkbox"> Displays</label>
+                        </div>
+                        <div class="fg">
+                            <div class="fg-title">Compatible With</div>
+                            <label class="fopt"><input type="checkbox" checked> Arduino</label>
+                            <label class="fopt"><input type="checkbox"> Raspberry Pi</label>
+                            <label class="fopt"><input type="checkbox"> ESP32</label>
+                            <label class="fopt"><input type="checkbox"> STM32</label>
+                        </div>
+                        <div class="fg">
+                            <div class="fg-title">Price Range</div>
+                            <input type="range" class="price-range" min="0" max="200" value="80">
+                            <div
+                                style="display:flex;
+                                justify-content:space-between;
+                                font-size:.76rem;
+                                color:var(--muted);
+                                margin-top:5px">
+                                <span>0DA</span><span id="prlbl">1800DA</span></div>
+                        </div>
+                    </aside>
+                    <div class="sgrid reveal" id="sgrid"></div>
+                </div>
+            </div>
+
+            <!-- PROJECTS TAB -->
+            <div class="tab-content" id="tab-projects">
+                <div class="proj-hdr reveal">
+                    <div class="psearch"><span>🔍</span><input type="text" placeholder="Search projects..."></div>
+                    <div class="fchips" style="margin:0">
+                        <button class="fchip active">All</button>
+                        <button class="fchip">Beginner</button>
+                        <button class="fchip">Intermediate</button>
+                        <button class="fchip">Advanced</button>
+                        <button class="fchip">Arduino</button>
+                        <button class="fchip">ROS2</button>
+                    </div>
+                </div>
+                <div class="pgrid reveal" id="pgrid"></div>
+            </div>
+
+            <!-- WIRING TAB -->
+            <div class="tab-content" id="tab-wiring">
+                <div class="wlayout">
+                    <div class="wlist reveal" id="wlist"></div>
+                    <div class="reveal" id="wpanel"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- team partners -->
+    <section class="team-section">
+        <h2>Our Partners</h2>
+
+        <div class="team-container">
+
+            <!-- Person 1 -->
+            <div class="team-card">
+                <h3>Abd El Baki Meloussi</h3>
+                <p>Leader and cyber security</p>
+                <div class="social">
+                    <a href="#">FB</a>
+                    <a href="bakimeloussi8">disc</a>
+                    <a href="#">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 2 -->
+            <div class="team-card">
+                <h3>Rebiai Aridj</h3>
+                <p>Marketing Management</p>
+                <div class="social">
+                    <a href="#">FB</a>
+                    <a href="aridjrebiai.">disc</a>
+                    <a href="#">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 3 -->
+            <div class="team-card">
+                <h3>Hichem Rahache</h3>
+                <p>Front Developer</p>
+                <div class="social">
+                    <a href="#">FB</a>
+                    <a href="hichem999882">disc</a>
+                    <a href="#">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 4 -->
+            <div class="team-card">
+                <h3>Ayoub Bourennane</h3>
+                <p> Graphic Designer</p>
+                <div class="social">
+                    <a href="#">FB</a>
+                    <a href="ayoub09">disc</a>
+                    <a href="#">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 5 -->
+            <div class="team-card">
+                <h3>Manel Feghoul</h3>
+                <p>Robotics researcher and programmer</p>
+                <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=61578336105991&locale=fr_FR">FB</a>
+                    <a href="https://canary.discord.com/channels/1426666777764433973/1426666779392086040">disc</a>
+                    <a href="https://www.linkedin.com/in/manel-feghoul-25397039a/">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 6 -->
+            <div class="team-card">
+                <h3>Tsouri Ben Tsouri Seren</h3>
+                <p>AI and Chatbot founder</p>
+                <div class="social">
+                    <a href="https://www.facebook.com/share/1DPU1pLSde/">FB</a>
+                    <a href="seren_tsr">disc</a>
+                    <a
+                        href="https://www.linkedin.com/in/seren-tsouri-ben-tsouri-1873ba3aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 7 -->
+            <div class="team-card">
+                <h3>Idris Khiati</h3>
+                <p>Back end developper</p>
+                <div class="social">
+                    <a href="https://www.facebook.com/share/1DF76dxmjv/">FB</a>
+                    <a href="oxydious3306">disc</a>
+                    <a href="https://www.linkedin.com/in/idris-khiaty-7b31743b6/">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 8 -->
+            <div class="team-card">
+                <h3>Amira Soumatia </h3>
+                <p>Video editing</p>
+                <div class="social">
+                    <a href="#">FB</a>
+                    <a href="why_amira">disc</a>
+                    <a href="#">IN</a>
+                </div>
+            </div>
+
+            <!-- Person 9 -->
+            <div class="team-card">
+                <h3>Kaouther benaicha</h3>
+                <p>Mobile developper</p>
+                <div class="social">
+                    <a href="#">FB</a>
+                    <a href="kao_ben">disc</a>
+                    <a href="#">IN</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="ft">
+                <div>
+                    <a href="#" class="logo" style="display:inline-flex;margin-bottom:1rem;">
+                        <div class="logo-mark">
+                        </div>VORTEX<span>electronics</span>
+                    </a>
+                    <p class="fdesc">The ultimate platform for robotics makers — learn, shop components, discover
+                        projects, and wire up your builds with confidence.</p>
+                    <div class="socials">
+                        <a class="sc" href="#">𝕏</a><a class="sc" href="#">in</a><a class="sc" href="#">▶</a><a
+                            class="sc" href="#">gh</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="fct">Platform</div>
+                    <ul class="flinks">
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Shop Components</a></li>
+                        <li><a href="#">Browse Projects</a></li>
+                        <li><a href="#">Wiring Guide</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="fct">Learn</div>
+                    <ul class="flinks">
+                        <li><a href="#">Getting Started</a></li>
+                        <li><a href="#">Arduino Basics</a></li>
+                        <li><a href="#">ROS2 Course</a></li>
+                        <li><a href="#">AI for Robots</a></li>
+                        <li><a href="#">Learning Paths</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="fct">Support</div>
+                    <ul class="flinks">
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fbot">
+                <span>© 2025 RoboHub. All rights reserved.</span>
+                <div style="display:flex;gap:1.5rem"><a href="#"
+                        style="color:var(--muted);text-decoration:none">Privacy</a><a href="#"
+                        style="color:var(--muted);text-decoration:none">Terms</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER -->
+    <div class="dbg" id="dbg" onclick="closeDrawer()"></div>
+    <div class="drawer" id="drawer">
+        <div class="dhdr">
+            <h3>🛒 Your Cart</h3><button class="closex" onclick="closeDrawer()">✕</button>
+        </div>
+        <div class="dbody" id="dbody"></div>
+        <div class="dftr" id="dftr" style="display:none">
+            <div class="cart-row"><span>Subtotal</span><span class="val" id="ctotal">$0.00</span></div>
+            <button class="ckbtn">Proceed to Checkout →</button>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"><span class="tic">✅</span><span id="tmsg">Added to cart!</span></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
